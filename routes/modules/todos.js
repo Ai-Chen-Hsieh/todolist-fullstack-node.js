@@ -8,11 +8,9 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const name = req.body.name
-
-  return Todo.create({ name })
+  const name = req.body.name;
+  Todo.create({ name })
     .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
 })
 
 router.get('/:id', (req, res) => {
