@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
+const usePassport = require('./config/passport')
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -36,6 +37,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
 app.use(routes)
+
+usePassport(app)
 
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}`)

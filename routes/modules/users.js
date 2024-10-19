@@ -3,10 +3,16 @@ const user = require('../../models/user');
 const router = express.Router();
 
 const User = require('../../models/user')
+const UserPassport = require('passport')
 
 router.get('/login', (req, res) => {
   return res.render('login')
 })
+
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/users/login'
+}))
 
 router.get('/register', (req, res) => {
   return res.render('register')
