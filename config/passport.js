@@ -29,7 +29,7 @@ module.exports = app => {
     done(null, user.id)
   })
 
-  /反綠鬣化
+  // 反序列化
   passport.deserializeUser((id, done) => {
     User.findById(id)
       .lean()
